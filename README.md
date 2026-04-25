@@ -30,10 +30,12 @@ listed above.
 ## Where data is stored
 
 All data is stored **locally on your device** in the App's private
-storage (Android sandbox), in a Room database. Data is **not encrypted
-at rest** in this version of the App; it is protected by Android's
-application sandbox, which prevents other apps from reading it without
-root access.
+storage (Android sandbox), in a Room database encrypted with
+[SQLCipher](https://www.zetetic.net/sqlcipher/). This includes SMS
+message history and all forwarding destination configurations (webhook
+URLs, Telegram bot tokens, SMTP credentials). Data is protected both
+by Android's application sandbox and by database-level encryption at
+rest.
 
 The App does **not** upload, sync, or back up your SMS messages or
 destination configurations to any server operated by the developer.
@@ -99,7 +101,11 @@ collect data from children.
 
 ## Security
 
-The App uses the Android sandbox to isolate its data from other apps.
+The App stores all data in a SQLCipher-encrypted Room database,
+providing encryption at rest for SMS history and destination
+credentials. The Android sandbox additionally prevents other apps from
+accessing App storage without root access.
+
 Network communications to webhooks, Telegram, and SMTP servers use the
 transport security configured by those services (typically HTTPS / TLS).
 You are responsible for the security of the destinations you configure
