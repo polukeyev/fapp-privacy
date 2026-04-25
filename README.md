@@ -10,7 +10,7 @@ it is stored, and what choices you have.
 ## Who we are
 
 The App is developed and maintained by an individual developer. Contact:
-**[YOUR-SUPPORT-EMAIL]**.
+**urbandevapp@gmail.com**.
 
 ## Data the App handles
 
@@ -115,4 +115,4 @@ in the App or on the project page before the change takes effect.
 
 ## Contact
 
-Questions about this Privacy Policy: **[YOUR-SUPPORT-EMAIL]**.
+Questions about this Privacy Policy: **urbandevapp@gmail.com**.
