@@ -1,0 +1,118 @@
+# Privacy Policy for fApp
+
+**Last updated:** 2026-04-25
+
+fApp ("the App") is an Android application that forwards incoming SMS
+messages to user-configured destinations (webhooks, Telegram bots, email
+addresses). This Privacy Policy describes what data the App handles, how
+it is stored, and what choices you have.
+
+## Who we are
+
+The App is developed and maintained by an individual developer. Contact:
+**[YOUR-SUPPORT-EMAIL]**.
+
+## Data the App handles
+
+The App processes the following data **on your device only**:
+
+- **SMS messages** received by your device while the App is running:
+  sender address, message body, timestamp, SIM slot, delivery status,
+  and optionally a parsed one-time password (OTP) code.
+- **Forwarding destinations** that you configure in the App: webhook
+  URLs, Telegram bot tokens and chat IDs, SMTP credentials and recipient
+  email addresses, and any sender filter rules (whitelist or blacklist).
+
+The App does not collect your name, phone number, contacts, location,
+device identifiers, or any other personal information beyond what is
+listed above.
+
+## Where data is stored
+
+All data is stored **locally on your device** in the App's private
+storage (Android sandbox), in a Room database. Data is **not encrypted
+at rest** in this version of the App; it is protected by Android's
+application sandbox, which prevents other apps from reading it without
+root access.
+
+The App does **not** upload, sync, or back up your SMS messages or
+destination configurations to any server operated by the developer.
+
+## How data is shared
+
+When a new SMS arrives and matches your filter rules, the App forwards
+the message **directly from your device** to the destinations you have
+configured:
+
+- **Webhook destinations** — sent over HTTPS (or HTTP, if you configure
+  an HTTP URL) as a JSON POST request to the URL you provide.
+- **Telegram destinations** — sent via the Telegram Bot API
+  (`api.telegram.org`) using the bot token you provide.
+- **Email destinations** — sent via the SMTP server you configure
+  (host, port, username, password) to the recipient address you choose.
+
+The developer does not operate any intermediate server. Forwarded data
+travels directly from your device to the third-party services you
+choose. Those services have their own privacy policies and terms which
+apply to the data once it leaves your device.
+
+## Third-party services
+
+The App itself does **not** include analytics SDKs, crash reporting
+services, advertising libraries, or any other third-party data
+collection. The only third-party services involved are those **you
+explicitly configure** as forwarding destinations (Telegram, your SMTP
+provider, your webhook endpoints).
+
+## Permissions and why we need them
+
+The App requests the following Android permissions:
+
+- `RECEIVE_SMS`, `READ_SMS` — to receive and read incoming SMS messages
+  for forwarding. This is the App's core function.
+- `INTERNET` — to deliver forwarded messages to webhooks, Telegram, and
+  SMTP servers.
+- `FOREGROUND_SERVICE`, `POST_NOTIFICATIONS` — to keep the forwarding
+  service running reliably and show its status in the notification
+  area.
+- `RECEIVE_BOOT_COMPLETED` — to automatically resume forwarding after
+  your device restarts.
+
+The App does not request `READ_CONTACTS`, `ACCESS_FINE_LOCATION`, or any
+other sensitive permission unrelated to SMS forwarding.
+
+## Data retention and deletion
+
+- All App data is removed when you **uninstall** the App.
+- You can clear all App data at any time via Android Settings → Apps →
+  fApp → Storage → Clear data.
+- Inside the App, you can delete individual destinations and your SMS
+  history.
+
+The developer cannot delete your data on your behalf because no data is
+held on developer-controlled servers.
+
+## Children
+
+The App is not directed at children under 13 and is not designed to
+collect data from children.
+
+## Security
+
+The App uses the Android sandbox to isolate its data from other apps.
+Network communications to webhooks, Telegram, and SMTP servers use the
+transport security configured by those services (typically HTTPS / TLS).
+You are responsible for the security of the destinations you configure
+(for example, using HTTPS webhooks rather than plain HTTP, and
+protecting your Telegram bot token and SMTP credentials).
+
+## Changes to this policy
+
+If the App's data handling practices change in any material way (for
+example, adding analytics or sending data to a developer-operated
+server), this policy will be updated and the change will be announced
+in the App or on the project page before the change takes effect.
+
+## Contact
+
+Questions about this Privacy Policy: **[YOUR-SUPPORT-EMAIL]**.
