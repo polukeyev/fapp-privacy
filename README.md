@@ -1,6 +1,6 @@
 # Privacy Policy for fApp
 
-**Last updated:** 2026-04-25
+**Last updated:** 2026-05-16
 
 fApp ("the App") is an Android application that forwards incoming SMS
 messages to user-configured destinations (webhooks, Telegram bots, email
@@ -18,14 +18,22 @@ The App processes the following data **on your device only**:
 
 - **SMS messages** received by your device while the App is running:
   sender address, message body, timestamp, SIM slot, delivery status,
-  and optionally a parsed one-time password (OTP) code.
+  optionally a parsed one-time password (OTP) code, and optionally a
+  recognised service name (e.g., "Sberbank", "Google") derived from the
+  sender header.
+- **Contact display name** for the SMS sender, only when you have
+  granted `READ_CONTACTS` permission (off by default). The lookup
+  happens on-device against your address book; no contact data is
+  uploaded by the App. If permission is not granted, the App never
+  reads your contacts.
 - **Forwarding destinations** that you configure in the App: webhook
   URLs, Telegram bot tokens and chat IDs, SMTP credentials and recipient
-  email addresses, and any sender filter rules (whitelist or blacklist).
+  email addresses, and any sender filter rules (whitelist, blacklist,
+  or whitelist/blacklist by contact name).
 
-The App does not collect your name, phone number, contacts, location,
-device identifiers, or any other personal information beyond what is
-listed above.
+The App does not collect your phone number, location, device
+identifiers, or any other personal information beyond what is listed
+above.
 
 ## Where data is stored
 
@@ -79,9 +87,14 @@ The App requests the following Android permissions:
   area.
 - `RECEIVE_BOOT_COMPLETED` — to automatically resume forwarding after
   your device restarts.
+- `READ_CONTACTS` *(optional, off by default)* — to look up the display
+  name for an SMS sender in your address book and include it in the
+  forwarded payload and on-device history. You can enable or disable
+  this feature in the App's settings; the App functions normally
+  without it.
 
-The App does not request `READ_CONTACTS`, `ACCESS_FINE_LOCATION`, or any
-other sensitive permission unrelated to SMS forwarding.
+The App does not request `ACCESS_FINE_LOCATION` or any other sensitive
+permission unrelated to SMS forwarding.
 
 ## Data retention and deletion
 
