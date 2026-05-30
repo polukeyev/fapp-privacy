@@ -1,11 +1,12 @@
-# Privacy Policy for fApp
+# Privacy Policy for SMS Forwarding: AutoRelay
 
-**Last updated:** 2026-05-16
+**Last updated:** 2026-05-30
 
-fApp ("the App") is an Android application that forwards incoming SMS
-messages to user-configured destinations (webhooks, Telegram bots, email
-addresses). This Privacy Policy describes what data the App handles, how
-it is stored, and what choices you have.
+SMS Forwarding: AutoRelay ("the App") is an Android application that
+forwards incoming SMS messages to user-configured destinations
+(webhooks, Telegram bots, email addresses). This Privacy Policy
+describes what data the App handles, how it is stored, and what
+choices you have.
 
 ## Who we are
 
@@ -100,7 +101,7 @@ permission unrelated to SMS forwarding.
 
 - All App data is removed when you **uninstall** the App.
 - You can clear all App data at any time via Android Settings → Apps →
-  fApp → Storage → Clear data.
+  SMS Forwarding: AutoRelay → Storage → Clear data.
 - Inside the App, you can delete individual destinations and your SMS
   history.
 
