@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — AutoRelay</title>
+  <meta name="description" content="Privacy Policy for AutoRelay (SMS Forwarding: AutoRelay) by Sperar.">
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+      color: #1a1a1a;
+      background: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { color: #e6e6e6; background: #121212; }
+      a { color: #6ea8fe; }
+    }
+    h1 { font-size: 1.9rem; margin-bottom: .25rem; }
+    h2 { font-size: 1.25rem; margin-top: 2rem; }
+    .updated { color: #777; font-size: .9rem; margin-top: 0; }
+    a { color: #0b5ed7; }
+    code { font-size: .95em; }
+    footer { margin-top: 3rem; font-size: .85rem; color: #888; border-top: 1px solid #ddd; padding-top: 1rem; }
+    @media (prefers-color-scheme: dark) { footer { border-color: #333; } }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 22, 2026</p>
+
+  <p><strong>AutoRelay</strong> (the app <em>“SMS Forwarding: AutoRelay”</em>,
+  the “App”), operated by <strong>Sperar</strong>, a trade name of Oleg Polukeev
+  (“Sperar”, “we”, “us”, “our”), is an Android application that forwards incoming
+  SMS messages to user-configured destinations (webhooks, Telegram bots, email
+  addresses). This Privacy Policy describes what data the App handles, how it is
+  stored, and what choices you have.</p>
+
+  <h2>Who we are</h2>
+  <p>The App is developed and maintained by Sperar. Contact:
+  <a href="mailto:urbandevapp@gmail.com">urbandevapp@gmail.com</a>.</p>
+
+  <h2>Data the App handles</h2>
+  <p>The App processes the following data <strong>on your device only</strong>:</p>
+  <ul>
+    <li><strong>SMS messages</strong> received by your device while the App is
+    running: sender address, message body, timestamp, SIM slot, delivery status,
+    optionally a parsed one-time password (OTP) code, and optionally a recognised
+    service name (e.g. “Sberbank”, “Google”) derived from the sender header.</li>
+    <li><strong>Contact display name</strong> for the SMS sender, only when you
+    have granted <code>READ_CONTACTS</code> permission (off by default). The
+    lookup happens on-device against your address book; no contact data is
+    uploaded by the App. If permission is not granted, the App never reads your
+    contacts.</li>
+    <li><strong>Forwarding destinations</strong> that you configure in the App:
+    webhook URLs, Telegram bot tokens and chat IDs, SMTP credentials and recipient
+    email addresses, and any sender filter rules (whitelist, blacklist, or
+    whitelist/blacklist by contact name).</li>
+  </ul>
+  <p>The App does not collect your phone number, location, device identifiers, or
+  any other personal information beyond what is listed above.</p>
+
+  <h2>Where data is stored</h2>
+  <p>All data is stored <strong>locally on your device</strong> in the App’s
+  private storage (Android sandbox), in a Room database encrypted with
+  <a href="https://www.zetetic.net/sqlcipher/">SQLCipher</a>. This includes SMS
+  message history and all forwarding destination configurations (webhook URLs,
+  Telegram bot tokens, SMTP credentials). Data is protected both by Android’s
+  application sandbox and by database-level encryption at rest.</p>
+  <p>The App does <strong>not</strong> upload, sync, or back up your SMS messages
+  or destination configurations to any server operated by us.</p>
+
+  <h2>How data is shared</h2>
+  <p>When a new SMS arrives and matches your filter rules, the App forwards the
+  message <strong>directly from your device</strong> to the destinations you have
+  configured:</p>
+  <ul>
+    <li><strong>Webhook destinations</strong> — sent over HTTPS (or HTTP, if you
+    configure an HTTP URL) as a JSON POST request to the URL you provide.</li>
+    <li><strong>Telegram destinations</strong> — sent via the Telegram Bot API
+    (<code>api.telegram.org</code>) using the bot token you provide.</li>
+    <li><strong>Email destinations</strong> — sent via the SMTP server you
+    configure (host, port, username, password) to the recipient address you
+    choose.</li>
+  </ul>
+  <p>We do not operate any intermediate server. Forwarded data travels directly
+  from your device to the third-party services you choose. Those services have
+  their own privacy policies and terms which apply to the data once it leaves
+  your device.</p>
+
+  <h2>Third-party services</h2>
+  <p>The App itself does <strong>not</strong> include analytics SDKs, crash
+  reporting services, advertising libraries, or any other third-party data
+  collection. The only third-party services involved are those <strong>you
+  explicitly configure</strong> as forwarding destinations (Telegram, your SMTP
+  provider, your webhook endpoints).</p>
+
+  <h2>Permissions and why we need them</h2>
+  <p>The App requests the following Android permissions:</p>
+  <ul>
+    <li><code>RECEIVE_SMS</code>, <code>READ_SMS</code> — to receive and read
+    incoming SMS messages for forwarding. This is the App’s core function.</li>
+    <li><code>INTERNET</code> — to deliver forwarded messages to webhooks,
+    Telegram, and SMTP servers.</li>
+    <li><code>FOREGROUND_SERVICE</code>, <code>POST_NOTIFICATIONS</code> — to keep
+    the forwarding service running reliably and show its status in the
+    notification area.</li>
+    <li><code>RECEIVE_BOOT_COMPLETED</code> — to automatically resume forwarding
+    after your device restarts.</li>
+    <li><code>READ_CONTACTS</code> <em>(optional, off by default)</em> — to look
+    up the display name for an SMS sender in your address book and include it in
+    the forwarded payload and on-device history. You can enable or disable this
+    feature in the App’s settings; the App functions normally without it.</li>
+  </ul>
+  <p>The App does not request <code>ACCESS_FINE_LOCATION</code> or any other
+  sensitive permission unrelated to SMS forwarding.</p>
+
+  <h2>Data retention and deletion</h2>
+  <ul>
+    <li>All App data is removed when you <strong>uninstall</strong> the App.</li>
+    <li>You can clear all App data at any time via Android Settings → Apps →
+    SMS Forwarding: AutoRelay → Storage → Clear data.</li>
+    <li>Inside the App, you can delete individual destinations and your SMS
+    history.</li>
+  </ul>
+  <p>We cannot delete your data on your behalf because no data is held on servers
+  we control.</p>
+
+  <h2>Children</h2>
+  <p>The App is not directed at children under 13 and is not designed to collect
+  data from children.</p>
+
+  <h2>Security</h2>
+  <p>The App stores all data in a SQLCipher-encrypted Room database, providing
+  encryption at rest for SMS history and destination credentials. The Android
+  sandbox additionally prevents other apps from accessing App storage without
+  root access.</p>
+  <p>Network communications to webhooks, Telegram, and SMTP servers use the
+  transport security configured by those services (typically HTTPS / TLS). You
+  are responsible for the security of the destinations you configure (for example,
+  using HTTPS webhooks rather than plain HTTP, and protecting your Telegram bot
+  token and SMTP credentials).</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If the App’s data handling practices change in any material way (for example,
+  adding analytics or sending data to a server we operate), this policy will be
+  updated and the change will be announced in the App or on our website before the
+  change takes effect.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this Privacy Policy:
+  <a href="mailto:urbandevapp@gmail.com">urbandevapp@gmail.com</a>.</p>
+
+  <footer>
+    Sperar · AutoRelay ·
+    <a href="/terms">Terms of Service</a> ·
+    <a href="/refund">Refund Policy</a>
+  </footer>
+</body>
+</html>
