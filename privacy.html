@@ -31,7 +31,7 @@
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: June 22, 2026</p>
+  <p class="updated">Last updated: July 7, 2026</p>
 
   <p><strong>AutoRelay</strong> (the app <em>“SMS Forwarding: AutoRelay”</em>,
   the “App”), operated by <strong>Sperar</strong>, a trade name of Oleg Polukeev
@@ -97,7 +97,16 @@
   reporting services, advertising libraries, or any other third-party data
   collection. The only third-party services involved are those <strong>you
   explicitly configure</strong> as forwarding destinations (Telegram, your SMTP
-  provider, your webhook endpoints).</p>
+  provider, your webhook endpoints), and Google Play for purchases (see below).</p>
+
+  <h2>Purchases (Google Play)</h2>
+  <p>The optional Pro subscription is purchased through <strong>Google Play
+  Billing</strong>. The entire payment is handled by Google: we never receive or
+  store your payment card details, billing address, or other payment
+  information. The App communicates with Google Play on-device only to determine
+  whether your subscription is active. Google’s processing of your purchase is
+  governed by <a href="https://policies.google.com/privacy">Google’s Privacy
+  Policy</a>.</p>
 
   <h2>Permissions and why we need them</h2>
   <p>The App requests the following Android permissions:</p>
@@ -106,11 +115,19 @@
     incoming SMS messages for forwarding. This is the App’s core function.</li>
     <li><code>INTERNET</code> — to deliver forwarded messages to webhooks,
     Telegram, and SMTP servers.</li>
-    <li><code>FOREGROUND_SERVICE</code>, <code>POST_NOTIFICATIONS</code> — to keep
-    the forwarding service running reliably and show its status in the
-    notification area.</li>
+    <li><code>FOREGROUND_SERVICE</code>,
+    <code>FOREGROUND_SERVICE_SPECIAL_USE</code>,
+    <code>POST_NOTIFICATIONS</code> — to keep the forwarding service running
+    reliably and show its status in the notification area.</li>
     <li><code>RECEIVE_BOOT_COMPLETED</code> — to automatically resume forwarding
     after your device restarts.</li>
+    <li><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code> — to ask Android (with
+    your confirmation) to exempt the App from battery optimizations, so that
+    forwarding is not stopped in the background.</li>
+    <li><code>USE_BIOMETRIC</code> — to offer the optional App Lock feature
+    (unlocking the App with fingerprint or face). Biometric authentication is
+    performed entirely by Android; the App never sees, stores, or transmits your
+    biometric data.</li>
     <li><code>READ_CONTACTS</code> <em>(optional, off by default)</em> — to look
     up the display name for an SMS sender in your address book and include it in
     the forwarded payload and on-device history. You can enable or disable this
